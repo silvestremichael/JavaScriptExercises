@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+    <h1> My Quest Tracker.io</h1>
+    <h2>Mr.Plumberman</h2>
+    <ul id="questList">
+        <li>Eat Mushroom</li>
+        <li>Go to Castle</li>
+        <li>Beat Pointy Turtle</li>
+        <li>Save Princess</li>
+    </ul>
+    <button id="questDeleter" onclick=questDelete()>Delete Quest</button>
+    <script>
+       //const bulletDeleter= document.getElementById("questList")
+       const questDelete=()=>{
+           if(document.getElementById("questList").firstElementChild){
+            document.getElementById("questList").innerHTML="";
+           }
+       }
+
+    </script>
+    </body>
+</html>

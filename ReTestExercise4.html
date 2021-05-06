@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #RecipePicture{
+            border-radius: 6px;
+            width: 200px;
+            
+        }
+    </style>
+</head>
+<body>
+    <button id="RecipeGenerator" onclick=GenerateRecipe() >Get Recipe</button>
+    <div id="RecipeName">
+        <img id="RecipePicture">
+        <h1> <p id="RecipeTitle"></p>
+        </h1>
+    </div>
+    <div id="RecipeDescription">
+        <p id ="RecipeCategory"></p> 
+        <p id ="RecipeCountry"></p>
+        <p id="RecipeInstruction">Instructions: </p>
+    </div>
+    <ul id="IngredientsList">Ingredients</ul>
+
+    <script>
+        const GenerateRecipe=()=>{
+            fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+            .then(res=>res.json())
+            .then(mealDescription=>{console.log(mealDescription.meals)
+                const dish=mealDescription.meals[0]
+                document.getElementById("RecipePicture").src=dish.strMealThumb
+                document.getElementById("RecipeTitle").innerHTML=`Name: ${dish.strMeal}`
+                document.getElementById("RecipeCategory").innerHTML=`Category:${dish.strCategory}`
+                document.getElementById("RecipeCountry").innerHTML=`Ethnicity: ${dish.strArea}`
+                //delete all bullet ingredients if there is already 
+                if(document.getElementById("IngredientsList").firstElementChild)
+                {
+                    document.getElementById("IngredientsList").innerHTML=''
+                }
+                //ingredient grabber
+                for(let i=1;i<=20;i++){
+                    const RecipeBullet=document.createElement('li')
+                    if(dish['strIngredient'+i]!=='' &&dish['strIngredient'+i]!==null){
+                        RecipeBullet.innerHTML=`${dish['strMeasure'+i]} ${dish['strIngredient'+i]}`
+                        document.getElementById("IngredientsList").appendChild(RecipeBullet)
+                    }
+                }
+                document.getElementById("RecipeInstruction").innerHTML=`Instructions: ${dish.strInstructions}`
+               
+                
+            })
+            .catch(error=>alert('Something went Wrong'))
+        }
+    </script>
+  
+</body>
+</html>
