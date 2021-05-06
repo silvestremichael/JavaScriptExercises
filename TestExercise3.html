@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Track My Quest.io</h1>
+    <script>
+      //Remove the first quest contents
+      const removeFirstContent=()=>{
+        const firstquestchecker=document.getElementById("firstList");
+        //check if list has bullet points
+        if(firstquestchecker.firstElementChild)
+        {
+            firstquestchecker.firstElementChild.remove();
+        }//if list has no bullet points delete whole first area
+        else{document.getElementById("firstButton").remove();
+            document.getElementById("firstQuest").remove();}
+      }
+      //Remove the second quest contents
+      const removeSecondContent=()=>{
+        const secondquestchecker=document.getElementById("secondList");
+        //check if list has bullet points
+        if(secondquestchecker.firstChild)
+        {
+            secondquestchecker.firstChild.remove();
+        }// if list has no bullet points delete whole 2nd area
+        else{document.getElementById("secondButton").remove();
+            document.getElementById("secondQuest").remove();}
+            
+        }
+
+        //Create first quest objective area
+      let div=document.createElement('div');
+        div.className="Objective 1";
+        div.id="firstQuest";
+        div.innerHTML=`<H2>Mr.Plumberman</H2>Great, the princess is kidnapped again. find a way to stop this once and for all
+        
+        <ul id="firstList">
+        <li>Eat Mushroom</li>
+        <li>Go to Castle</li>
+        <li>Beat Pointy Turtle</li>
+        <li>Save Princess</li>
+        </ul>
+        <input id="firstButton" type="button" value="Update Quest">`;
+
+        //Create second quest objective area
+        let div2=document.createElement('div');
+        div2.className="Objective 2";
+        div2.id="secondQuest";
+        div2.innerHTML=`<H2>My Precious!</H2>Oh look, you've found uncle's cursed golden ring. Throw it away before it melts your brain
+      
+        <ul id="secondList">
+        <li>You have my sword </li>
+        <li>and you have my bow</li>
+        <li>and my axe!</li>
+        <li>You shall not pass!</li>
+        </ul>
+        <input id="secondButton" type="button" value="Update Quest">`;
+        //add created elements to the body of html
+        document.body.appendChild(div)
+        document.body.appendChild(div2)
+        //activate functions based on button click
+        firstButton.addEventListener("click",removeFirstContent);
+        secondButton.addEventListener("click",removeSecondContent);
+    </script>
+    
+ <button id="secondButton" onclick="removeSecondContent()">Extra Button</button>
+  
+</body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+<head>
+</head>
+<body>
+    <input id="GenerateAPIButton" type="button" value="Click to fetch">
+    <div id ="output"></div>
+    <script>
+        const onFetch=()=>
+        {
+    fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata')
+    .then(res=>res.json())
+    .then(data=>{
+        let dish=data.meals[0];
+        document.getElementById("output").innerHTML=`<H1>${dish.strMeal}</H1>
+        <p>Category: ${dish.strCategory}</p>
+        <p>Area: ${dish.strArea}</p>
+        <p>Ingredients: </p>
+        <ul>
+            <li>${dish.strMeasure1} ${dish.strIngredient1}</li>
+            <li>${dish.strMeasure2} ${dish.strIngredient2}</li>
+            <li>${dish.strMeasure3} ${dish.strIngredient3}</li>
+            <li>${dish.strMeasure4} ${dish.strIngredient5}</li>
+            <li>${dish.strMeasure5} ${dish.strIngredient5}</li>
+            <li>${dish.strMeasure6} ${dish.strIngredient6}</li>
+            <li>${dish.strMeasure7} ${dish.strIngredient7}</li>
+            <li>${dish.strMeasure8} ${dish.strIngredient8}</li>
+            </ul>
+        <p>Instructions: </p>
+        <p>${dish.strInstructions} </p>
+        `;
+    
+        })
+       
+    .catch(error=>alert(`Error`))
+        }
+        GenerateAPIButton.addEventListener("click",onFetch)
+    </script>
+  
+</body>
+</html>
