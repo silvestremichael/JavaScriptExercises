@@ -1,0 +1,8 @@
+Git:
+Clone
+Place items into repo folder
+Git status
+Git add
+Git commit
+Git push
+(For team projects this would be in a dev branch)
