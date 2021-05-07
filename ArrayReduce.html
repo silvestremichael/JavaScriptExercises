@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            //Array.Reduce() returns a single value from the condition. goes to each element to perform function then updates values
+         const drinks=["water","coke","soda","whiskey","rhum","wine"]
+         let drinksChecker=drinks.reduce((initialValue,filteredDrink)=>{
+             
+             return initialValue+filteredDrink.includes("u");
+         },0)
+            
+      
+         console.log(drinksChecker)
+
+
+            
+            
+        </script>
+    </body>
+</html>
